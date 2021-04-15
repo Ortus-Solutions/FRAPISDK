@@ -1,0 +1,22 @@
+{
+    "homepage":"https://github.com/Ortus-Solutions/FRAPISDK",
+    "projectURL":"https://github.com/Ortus-Solutions/FRAPISDK",
+    "author":"Brad Wood",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/Ortus-Solutions/FRAPISDK"
+    },
+    "ignore":[
+        "**/.*"
+    ],
+    "location":"ForgeboxStorage",
+    "name":"FRAPISDK",
+    "scripts":{
+        "onRelease":"publish",
+        "postPublish":"!git push --follow-tags"
+    },
+    "shortDescription":"A simple CFML library for some common FRAPI functions.",
+    "slug":"FRAPISDK",
+    "type":"modules",
+    "version":"1.0.0"
+}
