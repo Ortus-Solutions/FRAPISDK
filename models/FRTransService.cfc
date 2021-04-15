@@ -72,7 +72,7 @@ component accessors=true singleton {
 	* 
 	* @name The short name of the transaction
 	*/
-	function setCurrentTransactionName( required string ) {
+	function setCurrentTransactionName( required string name ) {
 		if( !getFREnabled() ) {
 			return;
 		}
@@ -80,11 +80,11 @@ component accessors=true singleton {
 	}	
 	
 	/**
-	* Override the name of the current transaction's application
+	* Override the name of the current transaction's application name
 	* 
 	* @name The name of the application
 	*/
-	function setCurrentTransactionApplicationName( required string ) {
+	function setCurrentTransactionApplicationName( required string name ) {
 		if( !getFREnabled() ) {
 			return;
 		}

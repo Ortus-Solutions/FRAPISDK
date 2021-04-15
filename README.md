@@ -24,3 +24,35 @@ application.FRTransService = new modules.frapisdk.models.FRTransService();
 
 application.FRTransService.setCurrentTransactionName( 'My custom name' );
 ```
+
+# Usage
+
+Override the name of the current transaction
+
+```js
+FRTransService.setCurrentTransactionName( 'My custom name' );
+```
+
+
+Override the name of the current transaction's application name
+
+```js
+FRTransService.setCurrentTransactionApplicationName( 'My custom app name' );
+```
+
+Track a custom transaction (will be autlmatically associated with the web request master transaction)
+
+```js
+var tran FRTransService.startTransaction( 'name', 'description' );
+try {
+  // Do stuff here
+} catch( any e ) {
+  // You don't have to catch here, this is just an example of how to associate an exception with the custom transactioneception 
+  // Also e.getPageException() is lucee-secific.  
+  FRTransService.errorTransaction( tran, e.getPageException() );
+  rethrow;
+} finally {
+  // you MUST call this or the transaction will never show as being finished in FR's interfacet
+  FRTransService.endTransaction( tran )
+}
+```
