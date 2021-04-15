@@ -36,9 +36,16 @@ component accessors=true singleton {
 		}
 		
 		var FRTransaction = getFRAPI().createTrackedTransaction( name );
-		getFRAPI().setTransactionApplicationName( getApplicationMEtadata().name ?: 'Application' );
+		var applicationName = 'Application';
+		var applicationMetadata = getApplicationMetadata();
+		if( !isNull( applicationMetadata.name ) ) {
+			applicationName = applicationMetadata.name;
+		}
+		getFRAPI().setTransactionApplicationName( applicationName );
 		FRTransaction.setDescription( description );
-		properties.each( (k,v)=>FRTransaction.setProperty( toString( k ), v ) );
+		for( var prop in properties ) {
+			FRTransaction.setProperty( toString( prop ), properties[ prop ] );
+		}
 		return FRTransaction;
 	}
 	
