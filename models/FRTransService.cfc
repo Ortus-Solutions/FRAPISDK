@@ -64,6 +64,10 @@ component accessors=true singleton {
 		if( !getFREnabled() ) {
 			return;
 		}
+		// Adobne's catch block is of type java.lang.Throwable, but Lucee's is not.
+		if( javaException.getClass().getName() == 'lucee.runtime.exp.CatchBlockImpl' ) {
+			javaException = javaException.getPageException();
+		}
 		FRTransaction.setTrappedThrowable( javaException );
 	}
 		
